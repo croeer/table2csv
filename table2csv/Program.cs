@@ -37,16 +37,35 @@ namespace table2csv
 
             using (OleDbConnection conn = new OleDbConnection(connString))
             {
-                conn.Open();
+                try
+                {
+                    conn.Open();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Could not open database {0}\n{1}.", fileName, ex.Message);
+                    return;
+                }
 
                 foreach (var tableName in options.tableName)
                 {
                     Console.WriteLine("Exporting table {0}", tableName);
 
-                    OleDbCommand cmd = new OleDbCommand(String.Format("SELECT * FROM {0}", tableName), conn);
-                    OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
+                    try
+                    {
+                        OleDbCommand cmd = new OleDbCommand(String.Format("SELECT * FROM {0}", tableName), conn);
+                        OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
 
-                    adapter.Fill(results);
+                        adapter.Fill(results);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error reading table {0}: {1}", tableName, ex.Message);
+                        continue;
+                    }
+
+                    if (options.Verbose)
+                        Console.WriteLine("Parsing {0} rows, {1} columns", results.Rows.Count, results.Columns.Count);
 
                     StringBuilder sb = new StringBuilder();
 
@@ -59,13 +78,19 @@ namespace table2csv
                         IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
                         sb.AppendLine(string.Join(",", fields));
                     }
+
                     if (options.Verbose)
-                    {
                         Console.WriteLine("Saving to {0}.csv", tableName);
+
+                    try
+                    {
+
+                        File.WriteAllText(string.Format("{0}.csv", tableName), sb.ToString());
                     }
-
-
-                    File.WriteAllText(string.Format("{0}.csv", tableName), sb.ToString());
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error writing to file {0}.csv\n{1}", tableName, ex.Message);
+                    }
                 }
             }
 
