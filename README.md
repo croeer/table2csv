@@ -19,3 +19,5 @@ The application uses the following connection string: `"Provider=Microsoft.ACE.O
 
 ## Prerequisites
 This tool requires a MS Access installation (or the separate Microsoft Access Database Engine found [here](https://www.microsoft.com/de-de/download/details.aspx?id=13255)).
+
+It also depends on the [Command Line Parser Library](https://github.com/gsscoder/commandline).
