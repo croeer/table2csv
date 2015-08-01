@@ -1,6 +1,8 @@
 # table2csv
 A simple command line tool to export tables from MS Access mdb/accdb databases to csv files.
 
+For each exported table a csv-file with the corresponding name is created.
+
 ## Usage
 ```
   -f, --file         Required. Input database to be processed.
@@ -9,8 +11,8 @@ A simple command line tool to export tables from MS Access mdb/accdb databases t
   --help             Display this help screen.
 ```
 ### Examples
-* Export a single table: `table2csv -f Nothwind.accdb -t Customers`
-* Export multiple tables: `table2csv -f Nothwind.mdb -t Customers,Employees`
+* Export a single table: `table2csv -f Northwind.accdb -t Customers`. This will create `Customers.csv` in the current directory.
+* Export multiple tables: `table2csv -f Northwind.mdb -t Customers,Employees`.
 
 ### Connectionstring
 The application uses the following connection string: `"Provider=Microsoft.ACE.OLEDB.12.0;data source={0}"`
