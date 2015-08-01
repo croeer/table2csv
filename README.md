@@ -18,4 +18,4 @@ For each exported table a csv-file with the corresponding name is created.
 The application uses the following connection string: `"Provider=Microsoft.ACE.OLEDB.12.0;data source={0}"`
 
 ## Prerequisites
-This tool requires a MS Access installation (or the separate Microsoft Access Database Engine).
+This tool requires a MS Access installation (or the separate Microsoft Access Database Engine found (here)[https://www.microsoft.com/de-de/download/details.aspx?id=13255]).
