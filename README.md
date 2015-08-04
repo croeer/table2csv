@@ -11,7 +11,7 @@ For each exported table a csv-file with the corresponding name is created.
   -l, --list         List all table names.
   -o, --output       Ouput directory.
   -v, --verbose      (Default: False) Prints all messages to standard output.
- --help             Display this help screen.  
+  --help             Display this help screen.  
 ```
 The options `file`, `tablename` and `dump` are mutually exclusive, if one is present no other is available.
 ### Examples
