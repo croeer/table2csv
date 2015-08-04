@@ -54,9 +54,9 @@ namespace table2csv
                 return;
             }
 
-            if (! (options.OutputDir != null) && ! Directory.Exists(options.OutputDir))
+            if ((options.OutputDir != null) && ! Directory.Exists(options.OutputDir))
             {
-                Console.WriteLine("Directory does not exist: {0}.", options.OutputDir);
+                Console.WriteLine("Directory does jnot exist: {0}.", options.OutputDir);
                 return;
             }
 
