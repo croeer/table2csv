@@ -18,7 +18,7 @@ The options `file`, `tablename` and `dump` are mutually exclusive, if one is pre
 * Export a single table: `table2csv -f Northwind.accdb -t Customers`. This will create `Customers.csv` in the current directory.
 * Export multiple tables: `table2csv -f Northwind.mdb -t Customers,Employees`.
 * Dump whole database to folder output: `table2csv -f Northwind.mdb -d -o output`.
-* List all tables: `table2csv -f Northwind.mdb -d -l`.
+* List all tables: `table2csv -f Northwind.mdb -l`.
 
 ### Connectionstring
 The application uses the following connection string: `"Provider=Microsoft.ACE.OLEDB.12.0;data source={0}"`
